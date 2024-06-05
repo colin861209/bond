@@ -1,0 +1,10 @@
+[2024/4/12]
+v2_4
+1. open_loadwork Read by sheet name
+2. Read USD sell price from tdcc website
+
+v2_3
+1. Insert data remove first then check with list length
+
+v2_2
+1. Fix USD date logic: str_d=f'0{d}' if d < 10 else str(d)

@@ -1,0 +1,9 @@
+*.xlsm
+*.xlsx
+*.spec
+/dist/**
+/build/**
+utils/**/__pycache__/**
+*.ipynb
+/utils/selenium_lib/__pycache__/**
+/utils/selenium_lib/*.zip
