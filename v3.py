@@ -110,7 +110,7 @@ if __name__ == '__main__':
     list_table_date=USD_table.find_all('time')
     list_table_val=[USD_table.find_all('td', {'dir':'ltr'})[i] for i in range(0, len(USD_table.find_all('td', {'dir':'ltr'})), 2)]
     list_USD_val=[val.text for val in list_table_val]
-    list_USD_date=[val.text[5:].replace("-", "/") for val in list_table_date]
+    list_USD_date=[val.text[5:].replace("月", "/").replace("日", "") for val in list_table_date]
     for idx, USD_date in enumerate(list_USD_date):
         m=int(USD_date.split("/")[0])
         d=int(USD_date.split("/")[1])
@@ -146,7 +146,8 @@ if __name__ == '__main__':
             DEBUG(f"write USD/TWD to excel {str_B+str(excel_date_idx)}: {USD_val}")
         else:
             str_dt=list_table_date[list_USD_date.index(USD_date)].text
-            dt=datetime.strptime(str_dt, "%Y-%m-%d")
+            DEBUG(f"str_dt: {str_dt}")
+            dt=datetime.strptime(str_dt.replace("年", "-").replace("月", "-").replace("日", ""), "%Y-%m-%d")
             if not checkIsSaturdyOrSunday(dt):
                 DEBUG(f"Need to Insert USD column: {USD_date} -> {str_dt} -> {dt} --> Is Saturday/Sunday: {checkIsSaturdyOrSunday(dt)}")
                 if USD_date not in tmp_date:

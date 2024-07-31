@@ -7,6 +7,7 @@ from selenium.common.exceptions import TimeoutException, UnexpectedAlertPresentE
 from selenium.webdriver.chrome.service import Service
 from utils.Exception_lib import *
 import os
+import chromedriver_autoinstaller
 
 
 class WEBDRIVER:
@@ -15,6 +16,7 @@ class WEBDRIVER:
         self.__timeout=30
         url = f'https://announce.fundclear.com.tw/MOPSFundWeb/R03.jsp'
         service = Service(executable_path=r'./chromedriver.exe')
+        chromedriver_autoinstaller.install(cwd=True)
         try:
             self.chrome = webdriver.Chrome(service=service)
         except SessionNotCreatedException:
